@@ -1,4 +1,6 @@
 from django.db import models
+from apps.oferta.models import Oferta
+from apps.tienda.models import Tienda
 
 # Create your models here.
 
@@ -9,4 +11,6 @@ class Producto(models.Model):
     descripcion_producto = models.TextField(blank=True)
     precio_producto = models.IntegerField()
     imagen_producto = models.ImageField(default='default.jpg', blank=True)
+    tienda = models.ForeignKey(Tienda, null=True, blank=True, on_delete=models.CASCADE)
+    oferta = models.ManyToManyField(Oferta)
     
